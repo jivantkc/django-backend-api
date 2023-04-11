@@ -37,9 +37,13 @@ This should open up browser in local host and show
 `pip install django_environ`
 
 create .env file in project main folder
+
 DB_NAME=fill correct info
+
 DB_USER=fill correct info
+
 DB_PASSWORD=fill correct info
+
 DB_HOST=fill correct info
  
 
