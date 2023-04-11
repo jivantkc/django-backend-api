@@ -197,7 +197,7 @@ Inside settings.py
 #In INSTALLED APP=['storages']
 
 
-# INSTALL AND IMPLEMENT REST FRAMEWORK.
+# STEP5 INSTALL AND IMPLEMENT REST FRAMEWORK.
 
 `pip install djangorestframework`
 
@@ -223,6 +223,7 @@ INSTALLED_APPS = [
 'rest_framework_simplejwt',
 
 ]
+
 
 
 
