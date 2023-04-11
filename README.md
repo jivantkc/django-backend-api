@@ -356,4 +356,150 @@ create new file serialisers.py
                   fields="__all__"
 
 
+### SETTING UP VIEWS 
+inside views.py
+
+          from .models import *
+          from .serializers import (MyappSerializer,
+          
+                                    UserSerializer,
+                                    UserSerializerWithToken,
+                                    MyTokenObtainPairSerialiser,
+                                    ChangePasswordSerializer,
+                                   )
+          from django.http import Http404
+          from rest_framework.views import APIView
+          from rest_framework.response import Response
+          from rest_framework import status
+          from rest_framework.decorators import permission_classes
+          from rest_framework.permissions import IsAdminUser, IsAuthenticated
+          from rest_framework_simplejwt.views import TokenObtainPairView
+          from django.contrib.auth.hashers import make_password
+          from rest_framework import generics
+
+
+
+          """
+          Authentication Token Generator"""
+
+          class MyTokenObtainPairView(TokenObtainPairView):
+               serializer_class=MyTokenObtainPairSerialiser
+
+          """
+          User Registration View
+          """
+
+          class UserRegistrationView(APIView):
+              def post(self, request,format=None):
+                  data=request.data  
+                  try:
+                       user=User.objects.create(
+                            first_name=data["name"],
+                            username=data["email"],
+                            email=data["email"],
+                            password=make_password(data["password"])
+                       )
+                       serializer=UserSerializerWithToken(user, many=False)
+                       return Response(serializer.data)
+                  except:
+                       if data=={}:
+                              return Response("Please Input all data", status=status.HTTP_400_BAD_REQUEST)
+                       else:
+
+                          message={"detail":"User with this email already exists"}
+                          return Response(message,status=status.HTTP_400_BAD_REQUEST)
+
+
+          """
+          Change password
+          """
+          class ChangePasswordView(generics.UpdateAPIView):
+              """
+              An endpoint for changing password.
+              """
+              serializer_class = ChangePasswordSerializer
+              model = User
+              permission_classes = (IsAuthenticated,)
+
+              def get_object(self, queryset=None):
+                  obj = self.request.user
+                  return obj
+
+              def update(self, request, *args, **kwargs):
+                  self.object = self.get_object()
+                  serializer = self.get_serializer(data=request.data)
+
+                  if serializer.is_valid():
+                      # Check old password
+                      if not self.object.check_password(serializer.data.get("old_password")):
+                          return Response({"old_password": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
+                      # set_password also hashes the password that the user will get
+                      self.object.set_password(serializer.data.get("new_password"))
+                      self.object.save()
+                      response = {
+                          'status': 'success',
+                          'code': status.HTTP_200_OK,
+                          'message': 'Password updated successfully',
+                          'data': []
+                      }
+
+                      return Response(response)
+
+                  return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+         
+          class ProfileListView(APIView):
+              permission_classes =([IsAuthenticated,])
+              def get(self, request,format=None):
+                  query=request.user
+                  serializer=UserSerializer(query, many=False)
+                  return Response(serializer.data)
+                  # return Response("Is Authenticated by token")
+                  
+                  
+          # Create your views here.
+
+          class MyappListView(APIView):
+              permission_classes = (IsAuthenticated,)
+              def get(self, request,format=None):
+                  query=Myapp.objects.filter(user=request.user)
+                  serializer=MyappSerializer(query, many=True)
+                  return Response(serializer.data)
+
+              def post(self,request,format=None):
+                   serializer=MyappSerializer(data=request.data)
+                   if serializer.is_valid():
+                          serializer.save()
+                          return Response(serializer.data, status=status.HTTP_201_CREATED)
+                   return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+          class MyappDetailView(APIView):
+              permission_classes = (IsAuthenticated,)
+              def get_object(self, pk):
+                  try:
+                      return Myapp.objects.get(pk=pk)
+                  except Myapp.DoesNotExist:
+                      raise Http404
+
+              def get(self, request, pk, format=None):
+                      query=self.get_object(pk)
+                      serializer=MyappSerializer(query)
+                      return Response(serializer.data)
+
+              def put(self, request, pk, format=None):
+                      query=self.get_object(pk)
+                      serializer=MyappSerializer(query, request.data)
+                      if serializer.is_valid():
+                           serializer.save
+                           return Response(serializer.data)
+                      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+              def delete(self, request, pk, format=None):
+                      query=self.get_object(pk)
+                      model.delete()
+                      return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
 
