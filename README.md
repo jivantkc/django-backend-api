@@ -157,7 +157,7 @@ AWS_SECRET_ACCESS_KEY = env("AWS_ACCESS_KEY_ID"),
 
 AWS_STORAGE_BUCKET_NAME = env("AWS_ACCESS_KEY_ID"),
 
-# AWS_S3_FILE_OVERWRITE = False
+#AWS_S3_FILE_OVERWRITE = False
 
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
@@ -177,7 +177,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
-# STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
