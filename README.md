@@ -33,8 +33,22 @@ This should open up browser in local host and show
 
 
 ## STEP3 Connecting to database.
+#### Setting up ENviron
+`pip install django_environ`
+
+create .env file in project main folder
+DB_NAME=fill correct info
+DB_USER=fill correct info
+DB_PASSWORD=fill correct info
+DB_HOST=fill correct info
+ 
+
+
+Need to install different sql drivers based on your database preference.
+
+
 #### Mysql
-`pip install pumysql`
+`pip install pymysql`
 
 Edit  __init__.py in project origin and add following 2 lines
 
@@ -64,6 +78,34 @@ DATABASES = {
     }
 
 }
+
+
+
+#### POSTGRESSQL
+`pip3 install psycopg2`
+
+
+DATABASES = {
+    'default': {
+    
+        'ENGINE': 'django.db.backends.postgresql',
+         
+        'NAME':env("DB_NAME"),
+        
+        'USER':env("DB_USER"),
+        
+        'PASSWORD':env("DB_PASSWORD"),
+        
+        'HOST':env("DB_HOST"),
+        
+        'PORT':'5432',
+       
+       
+    }
+}
+
+
+
 
 
 
