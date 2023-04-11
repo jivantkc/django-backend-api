@@ -113,7 +113,7 @@ DATABASES = {
 
 
 
-## STEP4 STATIC FILES Using AWS S3 Bucket
+## STEP4 STATIC FILES Using AWS S3 Bucket & EMAIL SET UP
 #### Step1
 1. Login to aws
 2. Search s3 and click
@@ -149,6 +149,17 @@ Inside settings.py:
 
 
      Import os
+     
+     
+     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+     EMAIL_HOST = 'add correct one'
+     EMAIL_HOST_USER = 'use correct'
+     EMAIL_HOST_PASSWORD = 'emailpassword'
+     EMAIL_PORT = 587
+     EMAIL_USE_TLS = False
+     DEFAULT_FROM_EMAIL = 'My Website <noreply@mysite.com>'
+
+
 
     #S3 BUCKETS CONFIG 
 
@@ -214,6 +225,9 @@ Inside settings.py:
 
 #### Settings.py
 
+     CORS_ORIGIN_WHITELIST=('*')
+     MIDDLEWARE='corsheaders.middleware.CorsMiddleWare'
+
 
 INSTALLED_APPS = [
                     ...,
@@ -243,12 +257,25 @@ code:
     image=models.ImageField(upload_to="events")
 
     status=models.BooleanField(default=True)
+    
+    user=User
 
     def __str__(self):
 
         return str(self.Myapp_name)
 
  
+
+##### 5.1a Add Model to admin
+In the myapp folder there will be a default admin.py file. open that then do as following.
+
+          from django.contrib import admin
+          from .models import *
+          # Register your models here.
+          class MyappAdmin(admin.ModelAdmin):
+              list_display =( 'name','user')
+              list_filter = ('user',)
+          admin.site.register(Myapp,MyappAdmin)
 
 
 
