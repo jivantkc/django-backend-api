@@ -1,3 +1,7 @@
+import copyCodeBlock from '@pickra/copy-code-block';
+
+copyCodeBlock('<div>Thundercats</div>')
+
 ## Create django, django-restframwork, jwt, API depoy in Heroku.
 Backend Project created using django.
 
@@ -195,5 +199,35 @@ else:
 
 
 #In INSTALLED APP=['storages']
+
+
+# INSTALL AND IMPLEMENT REST FRAMEWORK.
+
+`pip install djangorestframework`
+
+`python -m pip install pillow` #for images
+
+`pip install django-cors-headers`
+
+`pip install djangorestframwork-simplejwt`
+
+`pip install django-rest-passwordreset`
+
+
+#### Settings.py
+
+INSTALLED_APPS=[
+...
+
+'rest_framework',
+
+'django_rest_passwordreset',
+
+'rest_framework_simplejwt',
+
+]
+
+
+
 
 
