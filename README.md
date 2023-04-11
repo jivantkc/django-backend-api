@@ -21,7 +21,9 @@ Start App:`django-admin startapp myapp`
 
 Run Project:`python manage.py runserver`
 
-This should open up browser in local host and show "Intallation worked Succesfully".
+This should open up browser in local host and show 
+
+"The install worked successfully! Congratulations!".
 
 
 ## STEP3 Connecting to database.
