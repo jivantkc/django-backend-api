@@ -1,7 +1,3 @@
-import copyCodeBlock from '@pickra/copy-code-block';
-
-copyCodeBlock('<div>Thundercats</div>')
-
 ## Create django, django-restframwork, jwt, API depoy in Heroku.
 Backend Project created using django.
 
@@ -149,53 +145,54 @@ On Local Terminal  & settings.py
 
 
 
-Inside settings.py
+Inside settings.py ={
+  {
+   Import os
 
-Import os
+   #S3 BUCKETS CONFIG 
 
-#S3 BUCKETS CONFIG 
+   AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID"),
 
-AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID"),
+   AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY"),
 
-AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY"),
+   AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAMED"),
 
-AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAMED"),
+   #AWS_S3_FILE_OVERWRITE = False
 
-#AWS_S3_FILE_OVERWRITE = False
+   AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+   AWS_DEFAULT_ACL = 'public-read'
 
-AWS_DEFAULT_ACL = 'public-read'
+   AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
-AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+   AWS_LOCATION = 'static'
 
-AWS_LOCATION = 'static'
+   AWS_QUERYSTRING_AUTH = False
 
-AWS_QUERYSTRING_AUTH = False
+   AWS_HEADERS = {'Access-Control-Allow-Origin': '*'}
 
-AWS_HEADERS = {'Access-Control-Allow-Origin': '*'}
+   DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+   STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+   STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+   #STATIC_URL = '/static/'
 
-#STATIC_URL = '/static/'
+   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
-
-if DEBUG:
+   if DEBUG:
 
     STATICFILES_DIRS=[
     
     os.path.join(BASE_DIR, 'build/static'),
     ]
     
-else:
+    else:
 
     STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
 
+}}
 
 
 #In INSTALLED APP=['storages']
