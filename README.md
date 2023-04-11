@@ -228,20 +228,25 @@ INSTALLED_APPS = [
 Remember not in project
 Open default models.py
 
-code:{
-[
-from django.db import models
-from django.contrib.auth.models import User
+code: 
 
-class Myapp(models.Model):
-name=models.Charfield(max_length=130)
-image=models.ImageField(upload_to="events"
-status=models.BooleanField(default=True)
-def __str__(self):
-    return str(self.Myapp_name)
+    from django.db import models
 
-]}
+    from django.contrib.auth.models import User
 
+    class Myapp(models.Model):
+
+    name=models.Charfield(max_length=130)
+
+    image=models.ImageField(upload_to="events"
+
+    status=models.BooleanField(default=True)
+
+    def __str__(self):
+
+        return str(self.Myapp_name)
+
+ 
 
 
 
