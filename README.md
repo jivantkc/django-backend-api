@@ -33,6 +33,8 @@ This should open up browser in local host and show
 
 
 ## STEP3 Connecting to database.
+Use default sqlite or others
+
 #### Setting up ENviron
 `pip install django_environ`
 
