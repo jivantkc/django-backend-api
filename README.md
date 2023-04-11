@@ -621,3 +621,50 @@ Then in Apps.py add following
 
               def ready(self):
                   import api.signals
+
+
+#8. Before Deploying to heroku
+
+`pip install gunicorn`
+
+run:`gunicorn backend.wsgi`
+
+Add Procfile to run Gunicorn server in Heroku
+
+Indie Project folder: `touch Procfile`
+
+Open Procfile in editor and add following:
+
+               web: gunicorn backend.wsgi
+               # remember to keep space before gunicorn
+              
+              
+              
+Add Requirements.txt 
+
+`pip freeze>requirements.txt`
+
+
+#9. Now deploying to heroku
+
+          git init
+          git add .
+          git commit -m'First-commit'
+
+          # to remove git init
+          rm rf .git
+
+Heroku
+in terminal
+
+          heroku login
+          heroku create projectname
+
+          heroku git:remote -a projectname
+          heroku config:set DISABLE_COLLECTSTATIC=1
+
+Then Push to heroku
+
+          git push heroku master
+
+
