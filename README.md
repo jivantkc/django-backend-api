@@ -212,8 +212,9 @@ Inside settings.py
 
 #### Settings.py
 
-INSTALLED_APPS=[
-...
+
+INSTALLED_APPS = [
+...,
 
 'rest_framework',
 
