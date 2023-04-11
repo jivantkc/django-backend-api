@@ -197,7 +197,7 @@ Inside settings.py
 #In INSTALLED APP=['storages']
 
 
-# STEP5 INSTALL AND IMPLEMENT REST FRAMEWORK.
+# Step5 INSTALL AND IMPLEMENT REST FRAMEWORK.
 
 `pip install djangorestframework`
 
