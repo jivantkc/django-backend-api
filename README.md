@@ -3,8 +3,11 @@ Backend Project created using django.
 
 ## STEP1 Virtual Environment
 Create a project folder:`%mkdir project`
+
 Go to folder:`%cd project`
+
 Creating Virtual environment to isolate packages:`%python3 -m venv env`
+
 Activate Virtual environment:`%source env/bin/activate`
 
 ## STEP2 Install Django, project & app
