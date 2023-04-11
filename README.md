@@ -145,7 +145,8 @@ On Local Terminal  & settings.py
 
 
 
-Inside settings.py:[
+Inside settings.py:
+code = [
  [
    Import os
 
