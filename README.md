@@ -145,8 +145,8 @@ On Local Terminal  & settings.py
 
 
 
-Inside settings.py ={
-  {
+Inside settings.py:[
+ [
    Import os
 
    #S3 BUCKETS CONFIG 
@@ -191,8 +191,7 @@ Inside settings.py ={
     else:
 
     STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
-
-}}
+]]
 
 
 #In INSTALLED APP=['storages']
