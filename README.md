@@ -149,7 +149,7 @@ Inside settings.py
 
 Import os
 
-#S3 BUCKETS CONFIG
+#S3 BUCKETS CONFIG=[
 
 AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID"),
 
@@ -193,7 +193,7 @@ else:
     STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
 
 
-
+]
 
 
 
