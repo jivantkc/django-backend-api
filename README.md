@@ -18,7 +18,9 @@ Create Django project:`django-admin startproject api`
 Go inside Project folder:`cd api`
 
 Start App:`django-admin startapp myapp`
+
 #Add App to project
+
 go to settings.py then in INSTALLED_APPS = [] add following.
 
 'myapp.apps.MyappConfig',
@@ -30,6 +32,6 @@ This should open up browser in local host and show
 "The install worked successfully! Congratulations!".
 
 
-## STEP3 Connecting to database.
+## STEP3 Connecting to database .
 
 
