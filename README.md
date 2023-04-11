@@ -193,6 +193,6 @@ else:
     STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
 
 
-#In INSTALLED APP=[`storages`]
+#In INSTALLED APP=['storages']
 
 
