@@ -1,8 +1,4 @@
-# django-backend-api
-Api Creation using django and django restframework
-
-
-## Create DJANGO REST FRAMEWORK API DEPLOY IN HEROKU
+## Create django, django-restframwork, jwt, API depoy in Heroku.
 Backend Project created using django.
 
 ## STEP1 Virtual Environment
