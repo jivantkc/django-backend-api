@@ -280,3 +280,80 @@ In the myapp folder there will be a default admin.py file. open that then do as 
 
 
 
+In Terminal 
+
+`python manage.py makemigrations`
+
+`python manage.py migrate`
+
+`python manage.py createsuperuser` # to create admin user
+
+
+### 5.3 Setup Serializers in the same folder inside myapp
+create new file serialisers.py
+
+          from rest_framework import serializers;
+          from .models import (Myapp, and other models)
+          from .models import User
+          from rest_framework_simplejwt.tokens import RefreshToken
+          from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+
+          """
+          Step One
+          """
+          class UserSerializer(serializers.ModelSerializer):
+              class Meta:
+                  model=User
+                  fields=["id","username","email"]
+
+
+          """
+          Step2 
+          """
+          class UserSerializerWithToken(UserSerializer):
+              token=serializers.SerializerMethodField(read_only=True)
+              class Meta:
+                  model=User
+                  fields=["id","username","email", "token"]
+
+              def get_token(self, obj):
+                  token=RefreshToken.for_user(obj)
+                  return str(token.access_token)
+
+          """
+          Step3 
+          """
+          class MyTokenObtainPairSerialiser(TokenObtainPairSerializer):
+              def validate(self, attrs):
+                  data=super().validate(attrs)
+                  serializers=UserSerializerWithToken(self.user).data
+
+                  for k,v in serializers.items():
+                      data[k]=v
+                  return data
+
+          """
+          ChangePassword
+          """
+
+          class ChangePasswordSerializer(serializers.Serializer):
+              model = User
+
+              """
+              Serializer for password change endpoint.
+              """
+              old_password = serializers.CharField(required=True)
+              new_password = serializers.CharField(required=True)
+
+
+          """
+          APP SERIALIZERS
+          """
+          class MyappSerializer(serializers.ModelSerializer):
+              class Meta:
+                  model=Myapp
+                  fields="__all__"
+
+
+
