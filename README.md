@@ -18,6 +18,10 @@ Create Django project:`django-admin startproject api`
 Go inside Project folder:`cd api`
 
 Start App:`django-admin startapp myapp`
+#Add App to project
+go to settings.py then in INSTALLED_APPS = [] add following.
+
+'myapp.apps.MyappConfig',
 
 Run Project:`python manage.py runserver`
 
