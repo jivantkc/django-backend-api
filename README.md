@@ -40,13 +40,13 @@ Use default sqlite or others
 
 create .env file in project main folder
 
-DB_NAME=fill correct info
+     DB_NAME=fill correct info
 
-DB_USER=fill correct info
+     DB_USER=fill correct info
 
-DB_PASSWORD=fill correct info
+     DB_PASSWORD=fill correct info
 
-DB_HOST=fill correct info
+     DB_HOST=fill correct info
  
 
 
@@ -58,9 +58,9 @@ Need to install different sql drivers based on your database preference.
 
 Edit  __init__.py in project origin and add following 2 lines
 
-import pymysql
+     import pymysql
 
-pymysql.install_as_MySQLdb()
+     pymysql.install_as_MySQLdb()
 
 
 #### In Settings.py
@@ -145,56 +145,58 @@ On Local Terminal  & settings.py
 
 
 
-Inside settings.py
+Inside settings.py:
 
 
-   Import os
+     Import os
 
-   #S3 BUCKETS CONFIG 
+    #S3 BUCKETS CONFIG 
 
-   AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID"),
+    AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID"),
 
-   AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY"),
+    AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY"),
 
-   AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAMED"),
+    AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAMED"),
 
-   #AWS_S3_FILE_OVERWRITE = False
+    #AWS_S3_FILE_OVERWRITE = False
 
-   AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
-   AWS_DEFAULT_ACL = 'public-read'
+    AWS_DEFAULT_ACL = 'public-read'
 
-   AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
-   AWS_LOCATION = 'static'
+    AWS_LOCATION = 'static'
 
-   AWS_QUERYSTRING_AUTH = False
+    AWS_QUERYSTRING_AUTH = False
 
-   AWS_HEADERS = {'Access-Control-Allow-Origin': '*'}
+    AWS_HEADERS = {'Access-Control-Allow-Origin': '*'}
 
-   DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-   STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-   STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
-   #STATIC_URL = '/static/'
+    #STATIC_URL = '/static/'
 
-   MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
-   if DEBUG:
+    if DEBUG:
 
-    STATICFILES_DIRS=[
-    
-    os.path.join(BASE_DIR, 'build/static'),
-    ]
-    
-    else:
+     STATICFILES_DIRS=[
 
-    STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
+     os.path.join(BASE_DIR, 'build/static'),
+     ]
+
+     else:
+
+     STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
 
 
-#In INSTALLED APP=['storages']
+#In settings:
+
+     INSTALLED APP=['storages']
 
 
 # Step5 INSTALL AND IMPLEMENT REST FRAMEWORK.
@@ -214,13 +216,13 @@ Inside settings.py
 
 
 INSTALLED_APPS = [
-...,
+                    ...,
 
-'rest_framework',
+     'rest_framework',
 
-'django_rest_passwordreset',
+     'django_rest_passwordreset',
 
-'rest_framework_simplejwt',
+     'rest_framework_simplejwt',
 
 ]
 
@@ -238,7 +240,7 @@ code:
 
     name=models.Charfield(max_length=130)
 
-    image=models.ImageField(upload_to="events"
+    image=models.ImageField(upload_to="events")
 
     status=models.BooleanField(default=True)
 
