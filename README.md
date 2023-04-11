@@ -33,5 +33,29 @@ This should open up browser in local host and show
 
 
 ## STEP3 Connecting to database.
+#### Mysql
+`pip install pumysql`
+
+Edit  __init__.py in project origin and add following 2 lines
+import pymysql
+pymysql.install_as_MySQLdb()
+
+#### In Settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':env("DB_NAME"),
+        'USER':env("DB_USER"),
+        'PASSWORD':env("DB_PASSWORD"),
+        'HOST':env("DB_HOST"),
+        'PORT':"3306",
+        'OPTIONS':{'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+    }
+
+}
+
+
+
+
 
 
