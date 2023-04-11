@@ -567,3 +567,57 @@ inside views.py
           ]
 
 
+# 7.Django Signals
+
+Add following in Models to send rest password email
+
+
+
+          """
+          To send email in forget password
+          """
+
+          from django.dispatch import receiver
+          from django.urls import reverse
+          from django_rest_passwordreset.signals import reset_password_token_created
+          from django.core.mail import send_mail  
+
+
+          @receiver(reset_password_token_created)
+          def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+
+              email_plaintext_message = "{}?token={}".format(reverse('password_reset:reset-password-request'), reset_password_token.key)
+
+              send_mail(
+                  # title:
+                  "Password Reset for {title}".format(title="Purchase App"),
+                  # message:
+                  "Some one requested for password reset, please click link to reset password. " "http://127.0.0.1:8000%s"%email_plaintext_message,
+                  # from:
+                  "noreply@blackwood.com.hk",
+                  # to:
+                  [reset_password_token.user.email]
+              )
+  
+  Create signals.py file in project folder and add following.
+  
+          from django.db.models.signals import pre_save
+          from django.contrib.auth.models import User
+
+          def updateUser(sender, instance, **kwargs):
+              user=instance
+              if user.email!="":
+                  user.username=user.email
+
+          pre_save.connect(updateUser, sender=User)
+          
+ 
+Then in Apps.py add following
+
+          from django.apps import AppConfig
+          class MyappConfig(AppConfig):
+              default_auto_field = 'django.db.models.BigAutoField'
+              name = 'myapp'
+
+              def ready(self):
+                  import api.signals
