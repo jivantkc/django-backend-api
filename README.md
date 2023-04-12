@@ -38,6 +38,18 @@ Use default sqlite or others
 #### Setting up ENviron
 `pip install django_environ`
 
+In Settings.py:
+
+           import os
+           from pathlib import Path
+           from datetime import timedelta
+           import environ
+
+           env = environ.Env()
+           # reading .env file
+           environ.Env.read_env()
+
+
 create .env file in project main folder
 
      DB_NAME=fill correct info
