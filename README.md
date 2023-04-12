@@ -128,10 +128,20 @@ Edit  __init__.py in project origin and add following 2 lines
          }
      }
 
+## SEND FROM DJANGO APP, EMAIL SET UP
+
+     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+     EMAIL_HOST = 'add correct one'
+     EMAIL_HOST_USER = 'use correct'
+     EMAIL_HOST_PASSWORD = 'emailpassword'
+     EMAIL_PORT = 587
+     EMAIL_USE_TLS = False
+     DEFAULT_FROM_EMAIL = 'My Website <noreply@mysite.com>'
 
 
 
-## STEP4 STATIC FILES Using AWS S3 Bucket & EMAIL SET UP
+
+## STEP4 STATIC FILES Using AWS S3 Bucket 
 #### Step1
 1. Login to aws
 2. Search s3 and click
@@ -167,17 +177,6 @@ Inside settings.py:
 
 
      Import os
-     
-     
-     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-     EMAIL_HOST = 'add correct one'
-     EMAIL_HOST_USER = 'use correct'
-     EMAIL_HOST_PASSWORD = 'emailpassword'
-     EMAIL_PORT = 587
-     EMAIL_USE_TLS = False
-     DEFAULT_FROM_EMAIL = 'My Website <noreply@mysite.com>'
-
-
 
     #S3 BUCKETS CONFIG 
 
