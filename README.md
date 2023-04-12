@@ -11,7 +11,8 @@ Creating Virtual environment to isolate packages:`python3 -m venv env`
 Activate Virtual environment:`source env/bin/activate`
 
 ## STEP2 Install Django, project & app
-Intall Django:`pip install django`
+NOTE:This tutorial is created using django 4.1, other dependencies might required for newer versions.
+Intall Django:`pip install Django==4.1`
 
 Create Django project:`django-admin startproject api`
 
