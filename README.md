@@ -93,24 +93,24 @@ Edit  __init__.py in project origin and add following 2 lines
 `pip3 install psycopg2`
 
 
-DATABASES = {
-    'default': {
-    
-        'ENGINE': 'django.db.backends.postgresql',
-         
-        'NAME':env("DB_NAME"),
-        
-        'USER':env("DB_USER"),
-        
-        'PASSWORD':env("DB_PASSWORD"),
-        
-        'HOST':env("DB_HOST"),
-        
-        'PORT':'5432',
-       
-       
-    }
-}
+     DATABASES = {
+         'default': {
+
+             'ENGINE': 'django.db.backends.postgresql',
+
+             'NAME':env("DB_NAME"),
+
+             'USER':env("DB_USER"),
+
+             'PASSWORD':env("DB_PASSWORD"),
+
+             'HOST':env("DB_HOST"),
+
+             'PORT':'5432',
+
+
+         }
+     }
 
 
 
