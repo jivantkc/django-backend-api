@@ -217,8 +217,9 @@ IF collect static successful create super user for creating admin user fro the a
      pip install django-cors-headers
      pip install django-rest-passwordreset
      
-#install simple jwt
-      pip install djangorestframwork-simplejwt
+#install simple jwt:
+
+          pip install djangorestframwork-simplejwt
 
 
 #### Settings.py
