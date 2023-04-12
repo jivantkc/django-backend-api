@@ -318,7 +318,8 @@ code:
          name=models.CharField(max_length=130)
          image=models.ImageField(upload_to="events")
          status=models.BooleanField(default=True)
-         user=models.ForeignKey(User, db_column="user")
+         user=models.ForeignKey(User, db_column="user", on_delete=models.CASCADE)
+
          def __str__(self):
              return str(self.Myapp_name)
 
