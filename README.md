@@ -235,7 +235,9 @@ IF collect static successful create super user for creating admin user fro the a
 
 
      CORS_ORIGIN_WHITELIST=('*')
-     MIDDLEWARE='corsheaders.middleware.CorsMiddleWare'
+     
+     #in MIDDLEWARE ADD FOLLOWING:
+     'corsheaders.middleware.CorsMiddleWare',
      
      REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
