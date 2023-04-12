@@ -696,7 +696,9 @@ EMAIL SET UP
 
 `pip install gunicorn`
 
-run:`gunicorn backend.wsgi`
+
+run:`gunicorn api.wsgi`
+api.wsgi is the file in root folder of project.
 
 Add Procfile to run Gunicorn server in Heroku
 
