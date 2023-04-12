@@ -215,6 +215,9 @@ Inside settings.py:
      INSTALLED APP=['storages']
      ALLOWED_HOSTS = ['*']
      DEBUG=False
+     
+#In Terminal
+          python manage.py collectstatic
 
 
 # Step5 INSTALL AND IMPLEMENT REST FRAMEWORK & SIMPLE JWT.
