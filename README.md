@@ -718,13 +718,7 @@ Add Requirements.txt
 
 #9. Now deploying to heroku
 
-          git init
-          git add .
-          git commit -m'First-commit'
-
-          # to remove git init
-          rm rf .git
-
+       
 Heroku
 in terminal
 
@@ -733,9 +727,24 @@ in terminal
 
           heroku git:remote -a projectname
           heroku config:set DISABLE_COLLECTSTATIC=1
+          
+          git init
+          git add .
+          git commit -m'First-commit'
+
+          # to remove git init
+          rm rf .git
+
 
 Then Push to heroku
 
           git push heroku master
+          
+          Note: IF any trouble easy to find solutions online regarding heroku.
+ 
+Setting up all variables of Local .env file in hereku:
+
+          Go to Settings> Config Vars >Then Key =Value 
+          Save
 
 
