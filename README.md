@@ -201,6 +201,8 @@ Inside settings.py:
      
 #In Terminal
           python manage.py collectstatic
+          
+#There might be some aws connection issues whose solutions can be found online.
 
 
 # Step5 INSTALL AND IMPLEMENT REST FRAMEWORK & SIMPLE JWT.
