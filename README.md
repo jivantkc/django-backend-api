@@ -128,12 +128,13 @@ Edit  __init__.py in project origin and add following 2 lines
          }
      }
 
-## SEND FROM DJANGO APP, EMAIL SET UP
+## SEND EMAIL FROM DJANGO APP:
+EMAIL SET UP
 
      EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-     EMAIL_HOST = 'add correct one'
-     EMAIL_HOST_USER = 'use correct'
-     EMAIL_HOST_PASSWORD = 'emailpassword'
+     EMAIL_HOST = env("EMAIL_HOST"),
+     EMAIL_HOST_USER = env("EMAIL_HOST_USER"),
+     EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD"),
      EMAIL_PORT = 587
      EMAIL_USE_TLS = False
      DEFAULT_FROM_EMAIL = 'My Website <noreply@mysite.com>'
