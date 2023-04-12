@@ -326,17 +326,12 @@ code:
 
     class Myapp(models.Model):
 
-    name=models.Charfield(max_length=130)
-
-    image=models.ImageField(upload_to="events")
-
-    status=models.BooleanField(default=True)
-    
-    user=User
-
-    def __str__(self):
-
-        return str(self.Myapp_name)
+         name=models.Charfield(max_length=130)
+         image=models.ImageField(upload_to="events")
+         status=models.BooleanField(default=True)
+         user=models.ForeignKey(User, db_column="user")
+         def __str__(self):
+             return str(self.Myapp_name)
 
  
 
