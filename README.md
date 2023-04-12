@@ -706,8 +706,8 @@ Indie Project folder: `touch Procfile`
 
 Open Procfile in editor and add following:
 
-               web: gunicorn backend.wsgi
-               # remember to keep space before gunicorn
+               web: gunicorn api.wsgi
+               # remember to keep space before gunicorn 
               
               
               
