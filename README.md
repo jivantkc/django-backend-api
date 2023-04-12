@@ -315,7 +315,7 @@ code:
          user=models.ForeignKey(User, db_column="user", on_delete=models.CASCADE)
 
          def __str__(self):
-             return str(self.Myapp_name)
+             return str(self.name)
 
  
 
