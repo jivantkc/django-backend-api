@@ -670,10 +670,9 @@ Add following in Models to send rest password email
  
 Then in Myapp folder Apps.py add following
 
-          from django.apps import AppConfig
-          class MyappConfig(AppConfig):
-              default_auto_field = 'django.db.models.BigAutoField'
+       
               name = 'myapp'
+              #Just below name add following. because sigal file is coming from api project folder
 
               def ready(self):
                   import api.signals
