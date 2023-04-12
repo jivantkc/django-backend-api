@@ -668,7 +668,7 @@ Add following in Models to send rest password email
           pre_save.connect(updateUser, sender=User)
           
  
-Then in Apps.py add following
+Then in Myapp folder Apps.py add following
 
           from django.apps import AppConfig
           class MyappConfig(AppConfig):
