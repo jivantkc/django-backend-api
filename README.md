@@ -128,18 +128,6 @@ Edit  __init__.py in project origin and add following 2 lines
          }
      }
 
-## SEND EMAIL FROM DJANGO APP:
-EMAIL SET UP
-
-     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-     EMAIL_HOST = env("EMAIL_HOST"),
-     EMAIL_HOST_USER = env("EMAIL_HOST_USER"),
-     EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD"),
-     EMAIL_PORT = 587
-     EMAIL_USE_TLS = False
-     DEFAULT_FROM_EMAIL = 'My Website <noreply@mysite.com>'
-
-
 
 
 ## STEP4 STATIC FILES Using AWS S3 Bucket 
@@ -692,6 +680,20 @@ Then in Apps.py add following
 
               def ready(self):
                   import api.signals
+                  
+## SEND EMAIL FROM DJANGO APP:
+EMAIL SET UP
+
+          EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+          EMAIL_HOST = env("EMAIL_HOST"),
+          EMAIL_HOST_USER = env("EMAIL_HOST_USER"),
+          EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD"),
+          EMAIL_PORT = 587
+          EMAIL_USE_TLS = False
+          DEFAULT_FROM_EMAIL = 'My Website <noreply@mysite.com>'
+
+
+
 
 
 #8. Before Deploying to heroku
