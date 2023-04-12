@@ -213,6 +213,8 @@ Inside settings.py:
 #In settings:
 
      INSTALLED APP=['storages']
+     ALLOWED_HOSTS = ['*']
+     DEBUG=False
 
 
 # Step5 INSTALL AND IMPLEMENT REST FRAMEWORK & SIMPLE JWT.
