@@ -197,12 +197,17 @@ Inside settings.py:
 
      INSTALLED APP=['storages']
      ALLOWED_HOSTS = ['*']
-     DEBUG=False
+     DEBUG=False # to check if static files are loading.
      
-#In Terminal
+#In Terminal:
+
           python manage.py collectstatic
           
 #There might be some aws connection issues whose solutions can be found online.
+
+IF collect static successful create super user for creating admin user fro the app.
+
+     python manage.py createsuperuser
 
 
 # Step5 INSTALL AND IMPLEMENT REST FRAMEWORK & SIMPLE JWT.
