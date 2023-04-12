@@ -40,7 +40,7 @@ This should open up browser in local host and show
 Use default sqlite or others
 
 #### Setting up ENviron
-`pip install django_environ`
+`pip install django-environ`
 
 In Settings.py:
 
