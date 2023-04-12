@@ -290,10 +290,13 @@ IF collect static successful create super user for creating admin user fro the a
 
 INSTALLED_APPS = [
                    
-      ...
-     'rest_framework',
-     'django_rest_passwordreset',
-     'rest_framework_simplejwt',
+    ...
+    'corsheaders',
+    'storages',
+    'rest_framework',
+    'django_rest_passwordreset',
+    'rest_framework_simplejwt',
+    'myapp.apps.MyappConfig',
 
 ]
 
