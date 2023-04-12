@@ -219,7 +219,7 @@ IF collect static successful create super user for creating admin user fro the a
      
 #install simple jwt:
 
-          pip install djangorestframwork-simplejwt
+          pip install djangorestframework-simplejwt
 
 
 #### Settings.py
