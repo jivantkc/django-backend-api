@@ -23,7 +23,9 @@ Start App:`django-admin startapp myapp`
 
 ### Add App to project
 
-go to settings.py then in INSTALLED_APPS = [] add following.
+go to settings.py then in 
+
+INSTALLED_APPS = [] add following.
 
      'myapp.apps.MyappConfig',
 
