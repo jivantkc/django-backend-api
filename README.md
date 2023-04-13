@@ -194,7 +194,7 @@ Inside settings.py:
      else:
          STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
 
-
+Note: If files are not loading or displaying there is some user access rule to be fixed or create new bucket with correct permissions.
 
 #In settings:
 
