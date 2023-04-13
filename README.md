@@ -194,7 +194,24 @@ Inside settings.py:
      else:
          STATIC_ROOT=os.path.join(BASE_DIR, 'build/static')
 
-Note: If files are not loading or displaying there is some user access rule to be fixed or create new bucket with correct permissions.
+Note: If files are not loading or displaying there is some issue with Permissions.
+Following settings have worked for trial.
+
+               Permissions overview:
+
+                         -Access
+                         -Objects can be public
+
+               Block public access (bucket settings):
+
+                    - all public access
+                    -Off
+                    -Individual Block Public Access settings for this bucket
+
+               Object Ownership:
+
+                    -Object Ownership
+                    -Bucket owner preferred
 
 #In settings:
 
