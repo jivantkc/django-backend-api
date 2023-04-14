@@ -698,7 +698,7 @@ Then in Myapp folder Apps.py add following
                   import api.signals
                   
 ## SEND EMAIL FROM DJANGO APP:
-EMAIL SET UP
+EMAIL SET UP, Remember no , after each variables.
 
           EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
           EMAIL_HOST = env("EMAIL_HOST")
@@ -706,10 +706,14 @@ EMAIL SET UP
           EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
           EMAIL_PORT = 587
           EMAIL_USE_TLS = False
-          DEFAULT_FROM_EMAIL = 'My Website <noreply@mysite.com>'
+          DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 
 in envfile like:
-EMAIL_HOST="email.host.com"
+
+          EMAIL_HOST="email.host.com"
+          EMAIL_HOST_USER=""
+          EMAIL_HOST_PASSWORD=""
+          DEFAULT_FROM_EMAIL=""your Website <noreply@yoursite.com>""
 
 
 
