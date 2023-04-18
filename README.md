@@ -216,7 +216,9 @@ Following settings have worked for trial.
 #In settings:
 
      INSTALLED APP=['storages']
+     CORS_ORIGIN_ALLOW_ALL = True
      ALLOWED_HOSTS = ['*']
+     
      DEBUG=False # to check if static files are loading.
      
 #In Terminal:
