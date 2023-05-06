@@ -429,9 +429,51 @@ create new file serialisers.py
           APP SERIALIZERS
           """
           class MyappSerializer(serializers.ModelSerializer):
+          suppliers= serializers.CharField(source='suppliers.name')
               class Meta:
                   model=Myapp
                   fields="__all__"
+                  
+                  
+         
+
+    def create(self, validated_data):
+        mydict={}
+        myfields=['suppliers']
+
+        for e in myfields: 
+            mydict[e]=validated_data.pop(e)['name']
+
+
+        '''
+        Serialising foreign keys suppliers
+        '''
+        suppliers_data=Supplier.objects.filter(name=mydict["suppliers"])
+       
+        updatedMydict={'suppliers':suppliers_data[0]}
+        '''
+        Serialising foreign keys category
+        '''
+        validated_data.update(updatedMydict)
+        return Myapp.objects.create(**validated_data)
+         
+         #need some tweek here as per our models.
+    
+    def update(self, instance, validated_data):
+        '''
+        Updating foreign keys category
+        '''
+        instance.date = validated_data.get('date', instance.date)
+        ...
+        ...
+
+        # Get the supplier instance
+        suppliers_data=validated_data.pop("suppliers")
+        supplier=Supplier.objects.get(name=suppliers_data["name"],user=instance.user)
+        # Update the dailypurchase instance with the supplier instance
+        instance.suppliers = supplier
+        instance.save()
+        return instance
 
 
 ### SETTING UP VIEWS 
@@ -571,6 +613,19 @@ inside views.py
                            serializer.save
                            return Response(serializer.data)
                       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                      
+              def patch(self, request, pk, format=None):
+                    transformer = self.get_object(pk)
+                    serializer = MyappSerializer(transformer,
+                                           data=request.data,
+                                           partial=True)
+        
+ 
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+          
 
 
               def delete(self, request, pk, format=None):
